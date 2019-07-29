@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.7.f'
 
 services:
   db:
@@ -13,7 +13,7 @@ services:
     expose:
       - "3306"
     volumes:
-      - ${PWD}/Volumes/db:/var/lib/mysql
+      - ./Volumes/db:/var/lib/mysql
   app:
     build:
       context: .
@@ -28,4 +28,4 @@ services:
     restart: "no"
     command: install --ignore-platform-reqs --no-scripts
     volumes:
-      - ${PWD}/humhub:/app
+      - ./humhub:/app
