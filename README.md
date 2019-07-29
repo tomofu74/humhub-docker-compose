@@ -31,8 +31,8 @@ tar xzvf <Download Directory>/humhub-1.3.12.tar.gz \
   * ```php/Dockerfile.rel`` is built for humhub-app container
 
 ``` shell
-docker-compose -f docker-compose-rel build
-docker-compose -f docker-compose-rel up -d
+docker-compose -f docker-compose-rel.yml build
+docker-compose -f docker-compose-rel.yml up -d
 ```
 
 ## Github version
@@ -44,8 +44,8 @@ docker-compose -f docker-compose-rel up -d
 git clone https://github.com/myoshimi/humhub-docker-compose
 cd humhub-docker-compose
 git clone https://github.com/humhub/humhub
-docker-compose -f docker-compose-dev build
-docker-compose -f docker-compose-dev up -d
+docker-compose -f docker-compose-dev.yml build
+docker-compose -f docker-compose-dev.yml up -d
 ```
 
 You can access elgg web service after stopping ```composer``` container.
