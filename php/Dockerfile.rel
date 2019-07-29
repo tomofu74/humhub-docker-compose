@@ -23,4 +23,3 @@ RUN set -xe && \
     docker-php-ext-install -j$(nproc) gd && \
     printf "\n" | pecl install APCu && \
     docker-php-ext-enable apcu.so
-
