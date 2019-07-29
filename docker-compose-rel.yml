@@ -13,7 +13,7 @@ services:
     expose:
       - "3306"
     volumes:
-      - ${PWD}/db:/var/lib/mysql
+      - ${PWD}/Volumes/db:/var/lib/mysql
   app:
     build:
       context: .
