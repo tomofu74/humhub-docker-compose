@@ -13,13 +13,13 @@ services:
     expose:
       - "3306"
     volumes:
-      - ${PWD}/Volumes/db:/var/lib/mysql
+      - ./Volumes/db:/var/lib/mysql
   app:
     build:
       context: .
       dockerfile: ./php/Dockerfile.rel
     restart: always
     volumes:
-      - ${PWD}/humhub:/var/www/html
+      - ./humhub:/var/www/html
     ports:
       - 80:80
