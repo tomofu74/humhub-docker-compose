@@ -52,6 +52,6 @@ You can access elgg web service after stopping ```composer``` container.
 
 # Non-volatile Volume
 
-* Directory ```volumes/db``` is mounted for mariadb container
+* Directory ```db``` is mounted for mariadb container
 * ```humhub``` is mounted for app container
 
