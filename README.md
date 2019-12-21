@@ -1,5 +1,7 @@
 # humhub-docker-compose
 Humhub via docker-compose
+forked from myoshimi/humhub-docker-compose
+
 
 ====
 
