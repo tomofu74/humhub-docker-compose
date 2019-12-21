@@ -20,7 +20,7 @@ services:
       dockerfile: ./php/Dockerfile.dev
     restart: always
     volumes:
-      - ${PWD}/humhub:/var/www/html
+      - ./humhub:/var/www/html
     ports:
       - 80:80
   composer:
