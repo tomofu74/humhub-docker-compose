@@ -1,25 +1,21 @@
 FROM php:7.2-apache
 
 # Add the stretch repo so the old freetype6 versions are available
-RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list
+# RUN ["/bin/bash", "-c", "echo 'deb http://deb.debian.org/debian stretch main' >> /etc/apt/sources.list"]
+RUN ["/bin/bash", "-c", "set -xe"]
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "libfreetype6-dev", "libjpeg-dev", "libpng-dev", "libcurl4-openssl-dev", "libzip-dev", "libicu-dev", "libldap-dev", "imagemagick", "unzip", "pkg-config", "patch"]
 
-RUN apt-get update && apt-get install -y pkg-config patch
-ADD https://git.archlinux.org/svntogit/packages.git/plain/trunk/freetype.patch?h=packages/php /tmp/freetype.patch
-RUN docker-php-source extract; \
-  cd /usr/src/php; \
-  patch -p1 -i /tmp/freetype.patch; \
-  rm /tmp/freetype.patch
+# Installing gd on buster results in freetype-config not found :: https://github.com/docker-library/php/issues/865
+ADD https://git.archlinux.org/svntogit/packages.git/plain/trunk/freetype.patch?h=packages/php&id=a8e8e87f405e0631b2a4552656413735ebf9457c /tmp/freetype.patch
+RUN ["docker-php-source", "extract"]
+RUN ["/bin/bash", "-c", "cd /usr/src/php"]
+RUN ["patch", "-f", "/tmp/freetype.patch"]
+RUN ["/bin/bash", "-c", "rm /tmp/freetype.patch"]
   
-RUN set -xe && \
-    apt-get update && \
-    apt-get install -y libfreetype6-dev libjpeg-dev libpng-dev \
-        libcurl4-openssl-dev libzip-dev libicu-dev \
-        libldap-dev imagemagick unzip && \
-    docker-php-ext-install -j$(nproc) \
-        curl mbstring pdo_mysql zip exif intl fileinfo ldap && \
-    docker-php-ext-configure gd \
-      --with-freetype-dir=/usr/include/ \
-      --with-jpeg-dir=/usr/include/ && \
-    docker-php-ext-install -j$(nproc) gd && \
-    printf "\n" | pecl install APCu && \
-    docker-php-ext-enable apcu.so
+RUN ["docker-php-ext-install", "-j2","curl", "mbstring", "pdo_mysql", "zip", "exif", "intl", "fileinfo", "ldap"]
+RUN ["docker-php-ext-configure", "gd", "--with-freetype-dir=/usr/include/", "--with-jpeg-dir=/usr/include/"]
+RUN ["docker-php-ext-install", "-j2", "gd"]
+RUN ["pecl", "install", "APCu"]
+RUN ["docker-php-ext-enable", "apcu.so"]
+
