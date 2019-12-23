@@ -48,6 +48,14 @@ cd humhub-docker-compose
 git clone https://github.com/humhub/humhub
 docker-compose -f docker-compose-dev.yml build
 docker-compose -f docker-compose-dev.yml up -d
+cd humhub
+chmod 777 -R assets
+chmod 777 -R protected/config
+chmod 777 -R protected/modules
+chmod 777 -R protected/runtime
+chmod 777 -R uploads
+composer global require "fxp/composer-asset-plugin:~1.4.2"
+composer install
 ```
 
 You can access elgg web service after stopping ```composer``` container.
