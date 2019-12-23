@@ -25,7 +25,7 @@ you need to fetch from official web site or github repository.
 git clone https://github.com/myoshimi/humhub-docker-compose
 cd humhub-docker-compose
 mkdir humhub
-tar xzvf <Download Directory>/humhub-1.3.12.tar.gz \
+tar xzvf <Download Directory>/humhub-1.3.17.tar.gz \
   -C <path to humhub-docker-compose>/humhub --strip=1
 ```
 
