@@ -54,8 +54,6 @@ chmod 777 -R protected/config
 chmod 777 -R protected/modules
 chmod 777 -R protected/runtime
 chmod 777 -R uploads
-composer global require "fxp/composer-asset-plugin:~1.4.2"
-composer install
 ```
 
 You can access elgg web service after stopping ```composer``` container.
