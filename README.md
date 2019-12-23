@@ -46,14 +46,15 @@ docker-compose -f docker-compose-rel.yml up -d
 git clone https://github.com/tomofu74/humhub-docker-compose
 cd humhub-docker-compose
 git clone https://github.com/humhub/humhub
-docker-compose -f docker-compose-dev.yml build
-docker-compose -f docker-compose-dev.yml up -d
 cd humhub
 chmod 777 -R assets
 chmod 777 -R protected/config
 chmod 777 -R protected/modules
 chmod 777 -R protected/runtime
 chmod 777 -R uploads
+cd ..
+docker-compose -f docker-compose-dev.yml build
+docker-compose -f docker-compose-dev.yml up -d
 ```
 
 You can access elgg web service after stopping ```composer``` container.
