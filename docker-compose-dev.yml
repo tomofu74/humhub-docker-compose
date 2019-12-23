@@ -21,11 +21,12 @@ services:
     restart: always
     volumes:
       - ./humhub:/var/www/html
+      - ./php/php.ini-development:/usr/local/etc/php/php.ini
     ports:
       - 80:80
   composer:
     image: composer:1.8.5
     restart: "no"
-    command: install --ignore-platform-reqs --no-scripts
+    command: bash -c "global require 'fxp/composer-asset-plugin:~1.4.2' && install --ignore-platform-reqs --no-scripts"
     volumes:
       - ./humhub:/app
