@@ -64,3 +64,7 @@ You can access elgg web service after stopping ```composer``` container.
 * Directory ```Volumes/db``` is mounted for mariadb container
 * ```humhub``` is mounted for app container
 
+# Humhub Install
+
+Access 'localhost:80' with your browser. Installer is start.
+Then, db settings are host: db , dbname : humhub , username : humhub, password : password
