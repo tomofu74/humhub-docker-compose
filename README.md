@@ -43,7 +43,7 @@ docker-compose -f docker-compose-rel.yml up -d
 * Download github repository of [Humhub](https://humhub.org/en/download)
 
 ``` shell
-git clone https://github.com/myoshimi/humhub-docker-compose
+git clone https://github.com/tomofu74/humhub-docker-compose
 cd humhub-docker-compose
 git clone https://github.com/humhub/humhub
 docker-compose -f docker-compose-dev.yml build
