@@ -30,3 +30,9 @@ services:
     command: bash -c "global require 'fxp/composer-asset-plugin:~1.4.2' && install --ignore-platform-reqs --no-scripts"
     volumes:
       - ./humhub:/app
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8888:80
+    depends_on:
+      - db
